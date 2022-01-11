@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- springXML配置
+    <bean id="userDao" class="com.nrvcer.dao.impl.UserDaoImpl"></bean>
+    <bean id="userService" class="com.nrvcer.service.impl.UserServiceImpl">
+        <property name="userDao" ref="userDao"></property>
+    </bean>
+    -->
+
+    <!-- 配置组件扫描器,用于扫描注解 -->
+    <context:component-scan base-package="com.nrvcer"></context:component-scan>
+
+    <!-- spring配置文件中加载外部的properties配置文件，其中jdbc.properties位于resources目录下 -->
+    <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
+</beans>
