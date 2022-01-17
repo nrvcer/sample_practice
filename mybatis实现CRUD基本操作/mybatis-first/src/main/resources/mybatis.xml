@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Mybatis的主配置文件-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 引入属性配置文件-->
+    <properties resource="jdbc.properties"/>
+    <!--设置日志,将日志输出到控制台,有利于开发人员调试-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <!-- 定义别名-->
+    <typeAliases>
+        <package name="com.nrvcer.domain"/>
+    </typeAliases>
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageInterceptor" />
+    </plugins>
+    <!--配置Mybatis环境 -->
+    <environments default="MySQL">
+        <!-- id表示数据源的名称-->
+        <environment id="MySQL">
+            <!-- 配置事务类型：使用JDBC事务-->
+            <transactionManager type="JDBC"/>
+            <!--配置数据源DataSource：创建数据库的连接Connection对象
+                属性type：其值POOLED表示使用数据库的连接池
+            -->
+            <dataSource type="POOLED">
+                <!--连接数据库的四要素
+                    driver：驱动内容
+                -->
+                <property name="driver" value="${jdbc.driver}"/>
+                <!--连接数据库的url-->
+                <property name="url" value="${jdbc.url}"/>
+                <!--用户名-->
+                <property name="username" value="${jdbc.username}"/>
+                <!--密码-->
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--指定其他mapper文件的位置
+        目的是找到其他mapper文件的sql语句
+    -->
+    <mappers>
+        <!--使用mapper的resource属性指定mapper文件的路径
+            这个路径是从target/classes路径开启的
+            使用注意：resource="mapper"文件的路径，使用 / 分割路径
+            一个resource指定一个mapper文件
+        -->
+        <mapper resource="com/nrvcer/dao/StudentDao.xml"/>
+    </mappers>
+</configuration>
