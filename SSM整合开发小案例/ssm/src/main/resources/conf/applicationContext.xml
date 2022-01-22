@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!-- spring的配置文件：声明service，dao,工具类，事务配置-->
+
+    <!-- 组件扫描器：扫描service包下的注解-->
+    <context:component-scan base-package="com.nrvcer.service"></context:component-scan>
+  <!-- 加载属性配置文件-->
+    <context:property-placeholder location="classpath:conf/jdbc.properties"/>
+    <!--配置Druid数据源DataSource -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+        init-method="init" destroy-method="close">
+        <!--        <property name="url" value="${jdbc.url}"/>-->
+        <!--        <property name="password" value="${jdbc.password"/>-->
+        <!--        <property name="username" value="${jdbc.user}"/>-->
+        <!--        <property name="username" value="root"></property>-->
+        <!--        <property name="password" value="123456"></property>-->
+        <!--        <property name="url" value="jdbc:mysql://localhost:3306/secs?useUnicode=true&amp;characterEncoding=UTF-8"></property>-->
+        <property name="username" value="${jdbc.user}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="password" value="${jdbc.passward}"/>
+    </bean>
+    <!-- 配置SqlSessionFactory-->
+    <bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:conf/mybatis.xml"/>
+    </bean>
+    <!--声明MyBatis的扫描器，创建Dao接口的实现类对象-->
+    <bean  class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <!--指定SqlSessionFactory对象，能获取SqlSession-->
+        <property name="sqlSessionFactoryBeanName" value="factory" />
+        <!--指定Dao接口的包名，框架会把这个包中的所有接口一次创建出Dao对象-->
+        <property name="basePackage" value="com.nrvcer.dao" />
+    </bean>
+</beans>

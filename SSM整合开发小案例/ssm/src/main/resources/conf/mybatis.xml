@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Mybatis的主配置文件-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--设置日志,将日志输出到控制台,有利于开发人员调试-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+    <typeAliases>
+        <!--domain包中的类名就是别名 -->
+        <package name="com.nrvcer.domain"/>
+    </typeAliases>
+
+
+    <!--指定其他mapper文件的位置
+        目的是找到其他mapper文件的sql语句
+        加载dao包下的所有Mapper文件
+    -->
+    <mappers>
+<!--        <mapper resource="com/nrvcer/dao/StudentDao.xml"/>-->
+        <package name="com.nrvcer.dao"/>
+    </mappers>
+</configuration>

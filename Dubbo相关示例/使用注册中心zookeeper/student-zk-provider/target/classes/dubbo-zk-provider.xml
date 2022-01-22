@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!--服务的名称 -->
+    <dubbo:application name="student-zk-provider"/>
+    <!-- 访问服务的协议和端口号-->
+    <dubbo:protocol name="dubbo" port="20880"/>
+    <!-- 注册中心zookeeper-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+    <!-- interface属性指定接口的全限定名称
+         ref属性指定接口的实现bean的id
+    -->
+    <dubbo:service interface="com.nrvcer.service.StudentService"
+                   ref="studentService"/>
+    <!-- StudentService实现bean-->
+    <bean id="studentService" class="com.nrvcer.service.StudentServiceImpl"></bean>
+</beans>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!-- 服务的名称-->
+    <dubbo:application name="student-provider"/>
+    <!-- 访问服务的协议名称，端口 -->
+    <dubbo:protocol name="dubbo" port="20881"/>
+    <!-- 声明暴露的服务，消费者将会调用接口中的方法-->
+    <dubbo:service interface="com.nrvcer.service.StudentService"
+                   ref="studentService"
+                   registry="N/A"/>
+    <bean id="studentService" class="com.nrvcer.service.StudentServiceImpl"/>
+</beans>

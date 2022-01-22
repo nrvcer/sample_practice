@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+    <!-- 服务的名称-->
+    <dubbo:application name="student-zk-consumer"/>
+    <!-- 注册中心zookeeper-->
+    <dubbo:registry address="zookeeper://localhost:2181"/>
+    <!--引用远程服务 -->
+    <dubbo:reference interface="com.nrvcer.service.StudentService"
+                     id="remoteStudentService"/>
+    <bean id="consumeService" class="com.nrvcer.service.impl.ConsumeServiceImpl">
+
+    </bean>
+
+</beans>

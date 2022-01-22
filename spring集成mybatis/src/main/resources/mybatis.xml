@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Mybatis的主配置文件-->
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 配置别名-->
+    <typeAliases>
+        <!-- package标签可以将包下面的所有类名作为别名
+            name属性指定实体类所在的包名
+        -->
+        <package name="com.nrvcer.domain"/>
+    </typeAliases>
+    <!-- 指定SQL映射文件的位置-->
+    <mappers>
+        <!--package标签指定dao接口所在包的位置，表示将包下的
+        所有SQL映射文件找到。
+         name属性指定dao接口的包名
+         -->
+        <package name="com.nrvcer.dao"/>
+    </mappers>
+</configuration>

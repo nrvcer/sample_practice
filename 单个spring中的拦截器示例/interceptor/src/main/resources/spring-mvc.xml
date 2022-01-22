@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+    <context:component-scan base-package="com.nrvcer.controller"/>
+    <!--声明拦截器 -->
+    <mvc:interceptors>
+        <!-- 声明第一个拦截器-->
+        <mvc:interceptor>
+            <!-- path属性指定拦截器的拦截地址
+                拦截的URi地址可以使用**通配符
+                /**表示拦截所有请求,这里拦截指定的请求
+            -->
+            <mvc:mapping path="/some.do"/>
+            <!-- 指定使用的拦截器-->
+            <bean class="com.nrvcer.handler.MyInterceptor"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
+    <!-- 配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"></property>
+        <property name="suffix" value=".jsp"></property>
+    </bean>
+</beans>

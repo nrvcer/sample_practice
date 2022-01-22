@@ -1,0 +1,10 @@
+# 1.spring集成MyBatis
+## 1.MySql创建数据库和表
+## 2.创建Maven模块，pom.xml文件加入相关依赖和资源插件
+## 3.定义实体类
+## 4.定义Dao接口
+## 5.定义映射文件Mapper
+## 6.定义Service接口和实现类
+## 7.定义MyBatis主配置文件mybatis.xml
+## 8.修改spring配置文件，比如applicationContext.xml
+    1. 新建属性配置文件jdbc.properties,从属性文件读取数据库连接信息
