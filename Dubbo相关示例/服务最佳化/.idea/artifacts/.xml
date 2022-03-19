@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jpackage" name="服务最佳化">
+    <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
+    <root id="root">
+      <element id="archive" name=".jar">
+        <element id="module-output" name="服务最佳化" />
+      </element>
+    </root>
+  </artifact>
+</component>

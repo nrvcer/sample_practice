@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class StudentController {
+
     @Autowired
     @Qualifier(value = "consumeService")
     private ConsumeService consumeService;

@@ -7,7 +7,7 @@
     <!-- 访问服务的协议名称，端口 -->
     <dubbo:protocol name="dubbo" port="20881"/>
     <!-- 声明暴露的服务，消费者将会调用接口中的方法-->
-    <dubbo:service interface="com.nrvcer.service.ConsumeService"
+    <dubbo:service interface="com.nrvcer.service.StudentService"
                    ref="studentService"
                    registry="N/A"/>
     <bean id="studentService" class="com.nrvcer.service.StudentServiceImpl"/>

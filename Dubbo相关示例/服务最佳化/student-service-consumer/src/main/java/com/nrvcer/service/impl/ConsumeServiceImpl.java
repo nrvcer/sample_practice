@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 
 public class ConsumeServiceImpl implements ConsumeService {
     @Autowired
-    @Qualifier(value="studentService")
+
     private StudentService studentService;
     public String queryStudent(Integer id) {
         return "学生id:" + id + ",学生信息:" + studentService.queryStudentById(id).toString();
